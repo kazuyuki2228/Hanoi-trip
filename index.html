@@ -84,6 +84,12 @@
   a.btn.klook{background:#ff5a1f; margin-top:8px;}
   .wideimg{width:100%; height:150px; object-fit:cover; border-radius:12px; display:block; margin:2px 0 10px;}
   .imgcap{font-size:11px; color:#8a7a63; margin:-6px 0 8px; text-align:right;}
+  .dishgrid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .dish{border:1px solid var(--line); border-radius:14px; overflow:hidden; background:#fffdf8;}
+  .dish img{width:100%; height:92px; object-fit:cover; display:block; background:#fdf0e3;}
+  .dish .emojihead{height:92px; display:flex; align-items:center; justify-content:center; font-size:40px; background:linear-gradient(140deg,#fde8ef,#fdf0e3);}
+  .dish .dn{font-weight:700; font-size:14px; padding:6px 9px 0;}
+  .dish .dd{font-size:11px; color:#7a6a58; padding:0 9px 8px;}
   .check{list-style:none; margin:0; padding:0;}
   .check li{padding:7px 0; border-bottom:1px dashed var(--line); font-size:15px;}
   .check li:last-child{border-bottom:none;}
@@ -123,7 +129,7 @@
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/2024-11-03_Hanoi%27s_Old_Quarter_1.jpg?width=1400" alt="ハノイ旧市街" data-cap="🏮 ハノイ旧市街" loading="lazy" onerror="this.remove()">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/St_Joseph_Cathedral_Hanoi.jpg?width=1400" alt="ハノイ大聖堂" data-cap="⛪ ハノイ大聖堂" loading="lazy" onerror="this.remove()">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hoan_Kiem_Lake1.jpg?width=1400" alt="ホアンキエム湖" data-cap="🌅 ホアンキエム湖" loading="lazy" onerror="this.remove()">
-    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Brochettes_%C3%A0_Hanoi.jpg?width=1400" alt="ハノイの屋台" data-cap="🍢 屋台グルメ" loading="lazy" onerror="this.remove()">
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC.jpg?width=1400" alt="バインミー" data-cap="🥖 バインミー" loading="lazy" onerror="this.remove()">
     <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese_Pho.jpg?width=1400" alt="フォー" data-cap="🍜 フォー" loading="lazy" onerror="this.remove()">
     <div class="cap" id="slidecap">🚢 ハロン湾</div>
     <div class="dots" id="slidedots"></div>
@@ -209,6 +215,20 @@
 
   <div class="panel" id="panel-spots">
     <section>
+      <h2>🍽️ 食べたいベトナム料理</h2>
+      <div class="dishgrid">
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese_Pho.jpg?width=600" alt="フォー" loading="lazy" onerror="this.remove()"><div class="dn">フォー</div><div class="dd">米麺のスープ。本命は鶏フォー（フォー・ガー）</div></div>
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/B%C3%A1nh_m%C3%AC.jpg?width=600" alt="バインミー" loading="lazy" onerror="this.remove()"><div class="dn">バインミー</div><div class="dd">パリふわバゲットのサンド。屋台で買いたい</div></div>
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=600" alt="ブンチャー" loading="lazy" onerror="this.remove()"><div class="dn">ブンチャー</div><div class="dd">炭火焼き肉のつけ麺風。ハノイ発祥の名物</div></div>
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/G%E1%BB%8Fi_cu%E1%BB%91n.jpg?width=600" alt="生春巻き" loading="lazy" onerror="this.remove()"><div class="dn">生春巻き（ゴイクオン）</div><div class="dd">海老とハーブをライスペーパーで。さっぱり系</div></div>
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Banh_Xeo%2C_Eden_Center.jpg?width=600" alt="バインセオ" loading="lazy" onerror="this.remove()"><div class="dn">バインセオ</div><div class="dd">パリパリの黄色いクレープ。ハーブで巻いて</div></div>
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Banh_cuon.jpg?width=600" alt="バインクオン" loading="lazy" onerror="this.remove()"><div class="dn">バインクオン</div><div class="dd">蒸したて米粉クレープの朝ごはん。ハノイ名物</div></div>
+        <div class="dish"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Egg_coffee_in_Hanoi.jpg?width=600" alt="エッグコーヒー" loading="lazy" onerror="this.remove()"><div class="dn">エッグコーヒー</div><div class="dd">ふわふわ卵クリームのコーヒー。ほぼデザート</div></div>
+        <div class="dish"><div class="emojihead">🍧</div><div class="dn">チェー</div><div class="dd">豆や果物の甘いデザートスープ。屋台スイーツ</div></div>
+      </div>
+    </section>
+
+    <section>
       <h2>📍 行きたいスポット <span class="badge pink">タップでマップ</span></h2>
       <div class="spot"><div class="thumb">🍜<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Vietnamese_Pho.jpg?width=400" alt="" loading="lazy" onerror="this.remove()"></div><div class="info"><div class="name">Huyền Hương Chicken Phở</div><div class="note">ミシュラン掲載の鶏フォー ／ ホテルから約140m</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Huyen+Huong+Chicken+Pho+Hanoi" target="_blank" rel="noopener">マップ</a></div>
       <div class="spot"><div class="thumb">🍲<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Bun-cha-hanoi.jpg?width=400" alt="" loading="lazy" onerror="this.remove()"></div><div class="info"><div class="name">Bún Chả Đắc Kim</div><div class="note">1966年創業のブンチャー老舗 ／ 現金のみ</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Bun+Cha+Dac+Kim+Hanoi" target="_blank" rel="noopener">マップ</a></div>
@@ -260,7 +280,7 @@
     </section>
   </div>
 </main>
-<footer>わが家のハノイ旅行アプリ（試作版 v0.6）— これから少しずつ育てる</footer>
+<footer>わが家のハノイ旅行アプリ（試作版 v0.7）— これから少しずつ育てる</footer>
 
 <nav class="tabbar">
   <button class="on" data-tab="home"><span class="ic">🏠</span>ホーム</button>
