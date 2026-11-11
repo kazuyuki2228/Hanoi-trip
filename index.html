@@ -82,6 +82,8 @@
     background:var(--accent); border-radius:999px; padding:7px 13px; display:inline-block;
   }
   a.btn.klook{background:#ff5a1f; margin-top:8px;}
+  .wideimg{width:100%; height:150px; object-fit:cover; border-radius:12px; display:block; margin:2px 0 10px;}
+  .imgcap{font-size:11px; color:#8a7a63; margin:-6px 0 8px; text-align:right;}
   .check{list-style:none; margin:0; padding:0;}
   .check li{padding:7px 0; border-bottom:1px dashed var(--line); font-size:15px;}
   .check li:last-child{border-bottom:none;}
@@ -133,6 +135,7 @@
   <div class="panel active" id="panel-home">
     <section>
       <h2>✈️ フライト <span class="badge">発券済み</span></h2>
+      <img class="wideimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/20250313_Airbus_A350-941_of_Vietnam_Airlines_%28VN-A899%29_taking_off_at_SYD.jpg?width=1200" alt="ベトナム航空 A350" loading="lazy" onerror="this.remove()">
       <div class="flight">
         <div>
           <div class="route">関西 10:00 → ハノイ 13:00</div>
@@ -152,6 +155,8 @@
 
     <section>
       <h2>🏨 ホテル <span class="badge">予約済み</span></h2>
+      <img class="wideimg" src="https://commons.wikimedia.org/wiki/Special:FilePath/2024-11-03_Hanoi%27s_Old_Quarter_1.jpg?width=1200" alt="ホテルのある旧市街の街並み" loading="lazy" onerror="this.remove()">
+      <div class="imgcap">ホテルのある旧市街エリアの街並み</div>
       <div class="spot">
         <div class="thumb">🛏️</div>
         <div class="info">
@@ -253,7 +258,7 @@
     </section>
   </div>
 </main>
-<footer>わが家のハノイ旅行アプリ（試作版 v0.3）— これから少しずつ育てる</footer>
+<footer>わが家のハノイ旅行アプリ（試作版 v0.4）— これから少しずつ育てる</footer>
 
 <nav class="tabbar">
   <button class="on" data-tab="home"><span class="ic">🏠</span>ホーム</button>
