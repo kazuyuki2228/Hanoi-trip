@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハノイ家族旅行 2027 | わが家の旅行アプリ</title>
+<style>
+  :root{
+    --red:#da251d; --gold:#ffde00; --ink:#2b2118; --bg:#fff8ee;
+    --card:#ffffff; --accent:#0e7a5f; --accent2:#e86a92; --line:#f0e2cc;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0; font-family:"Hiragino Maru Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+       background:var(--bg); color:var(--ink); line-height:1.65;}
+  header{
+    background:linear-gradient(160deg,#b91c12 0%, var(--red) 55%, #f2622e 100%);
+    color:#fff; padding:26px 20px 20px; text-align:center;
+  }
+  header .star{color:var(--gold); font-size:28px; letter-spacing:6px;}
+  header h1{margin:4px 0 2px; font-size:26px; letter-spacing:1px;}
+  header .sub{opacity:.92; font-size:14px;}
+  #countdown{
+    margin:14px auto 2px; display:inline-block; background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.45); border-radius:999px; padding:7px 18px;
+    font-size:15px; font-weight:700;
+  }
+  #countdown b{font-size:21px; color:var(--gold);}
+  .hero{max-width:680px; margin:14px auto 0; padding:0 14px;}
+  .hero figure{margin:0; border-radius:18px; overflow:hidden; box-shadow:0 4px 16px rgba(120,70,0,.18); background:#e9dcc4;}
+  .hero img{display:block; width:100%; height:210px; object-fit:cover;}
+  .hero figcaption{font-size:11px; color:#8a7a63; padding:6px 4px 0; text-align:right;}
+  main{max-width:680px; margin:0 auto; padding:4px 14px 110px;}
+  .panel{display:none;}
+  .panel.active{display:block;}
+  section{
+    background:var(--card); border:1px solid var(--line); border-radius:18px;
+    padding:16px 16px 12px; margin:14px 0; box-shadow:0 2px 10px rgba(120,70,0,.05);
+  }
+  h2{font-size:18px; margin:2px 0 10px; display:flex; align-items:center; gap:8px;}
+  h2 .badge{
+    margin-left:auto; font-size:11px; background:var(--accent); color:#fff;
+    border-radius:999px; padding:2px 10px; font-weight:700;
+  }
+  h2 .badge.pink{background:var(--accent2);}
+  .flight{display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px dashed var(--line);}
+  .flight:last-of-type{border-bottom:none;}
+  .flight .route{font-weight:700; font-size:16px;}
+  .flight .meta{font-size:12px; color:#7a6a58;}
+  .flight .no{font-size:12px; background:#fdf0e3; border-radius:8px; padding:2px 8px; font-weight:700;}
+  ul.days{list-style:none; margin:0; padding:0;}
+  ul.days li{padding:9px 0 9px 2px; border-bottom:1px dashed var(--line);}
+  ul.days li:last-child{border-bottom:none;}
+  ul.days .d{font-weight:700; color:var(--red);}
+  ul.days .t{font-size:14px;}
+  .spot{display:flex; align-items:center; gap:10px; padding:9px 0; border-bottom:1px dashed var(--line);}
+  .spot:last-child{border-bottom:none;}
+  .spot .emoji{font-size:20px; width:28px; text-align:center;}
+  .spot .info{flex:1; min-width:0;}
+  .spot .name{font-weight:700; font-size:15px;}
+  .spot .note{font-size:12px; color:#7a6a58;}
+  a.btn{
+    flex:none; text-decoration:none; font-size:13px; font-weight:700; color:#fff;
+    background:var(--accent); border-radius:999px; padding:7px 13px; display:inline-block;
+  }
+  a.btn.klook{background:#ff5a1f; margin-top:8px;}
+  .check{list-style:none; margin:0; padding:0;}
+  .check li{padding:7px 0; border-bottom:1px dashed var(--line); font-size:15px;}
+  .check li:last-child{border-bottom:none;}
+  .check input{width:19px; height:19px; vertical-align:-3px; margin-right:8px; accent-color:var(--accent);}
+  .check .done{text-decoration:line-through; color:#9a8f83;}
+  table.budget{width:100%; border-collapse:collapse; font-size:14px;}
+  table.budget td{padding:6px 2px; border-bottom:1px dashed var(--line);}
+  table.budget td:last-child{text-align:right; font-weight:700; white-space:nowrap;}
+  .memo{font-size:14px;}
+  .memo li{margin:4px 0;}
+  footer{text-align:center; font-size:12px; color:#9a8f83; padding:2px 0 8px;}
+  nav.tabbar{
+    position:fixed; left:0; right:0; bottom:0; z-index:10;
+    background:rgba(255,255,255,.97); border-top:1px solid var(--line);
+    display:flex; justify-content:space-around; padding:6px 4px calc(6px + env(safe-area-inset-bottom));
+    box-shadow:0 -2px 12px rgba(120,70,0,.08);
+  }
+  nav.tabbar button{
+    flex:1; background:none; border:none; font-family:inherit; cursor:pointer;
+    font-size:12px; font-weight:700; color:#9a8f83; padding:4px 0 2px; border-radius:12px;
+  }
+  nav.tabbar button .ic{display:block; font-size:21px; line-height:1.25;}
+  nav.tabbar button.on{color:var(--red); background:#fdf0e3;}
+</style>
+</head>
+<body>
+<header>
+  <div class="star">★</div>
+  <h1>ハノイ家族旅行</h1>
+  <div class="sub">2027年10月16日（土）〜 10月20日（水）・3泊5日<br>大人2人＋🍑（4歳）＋🍒（1歳8か月）</div>
+  <div><span id="countdown">出発まであと <b>…</b> 日</span></div>
+</header>
+
+<div class="hero">
+  <figure>
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ha_Long_Bay_-_Halong1419.jpg?width=1600" alt="ハロン湾の風景" loading="lazy"
+         onerror="this.closest('figure').style.display='none'">
+    <figcaption>ハロン湾（Photo: Wikimedia Commons, CC0）</figcaption>
+  </figure>
+</div>
+
+<main>
+  <div class="panel active" id="panel-home">
+    <section>
+      <h2>✈️ フライト <span class="badge">発券済み</span></h2>
+      <div class="flight">
+        <div>
+          <div class="route">関西 10:00 → ハノイ 13:00</div>
+          <div class="meta">10/16（土）ベトナム航空 A350・運航約5時間</div>
+        </div>
+        <div class="no">VN335</div>
+      </div>
+      <div class="flight">
+        <div>
+          <div class="route">ハノイ 0:15 → 関西 6:40</div>
+          <div class="meta">10/20（水）ベトナム航空 A350・運航約4時間25分</div>
+        </div>
+        <div class="no">VN334</div>
+      </div>
+      <p class="memo">🍒の幼児券・ベビーミール、🍑のチャイルドミールも手配済み。座席は「3席並び」が絶対条件（出発前に再確認）。</p>
+    </section>
+
+    <section>
+      <h2>🏨 ホテル <span class="badge">予約済み</span></h2>
+      <div class="spot">
+        <div class="emoji">🛏️</div>
+        <div class="info">
+          <div class="name">Imperial Hotel &amp; Spa</div>
+          <div class="note">旧市街・ホアンキエム湖そば ／ インペリアルスイート 3泊 ／ ベビーベッド・空港送迎あり</div>
+        </div>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Imperial+Hotel+%26+Spa+Hanoi" target="_blank" rel="noopener">マップ</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>🚢 ハロン湾クルーズ <span class="badge">予約済み</span></h2>
+      <p class="memo" style="margin-top:0;">
+        <b>10/18（月）スカイ・デイクルーズ</b>（日本語ガイド付き）<br>
+        ホテルお迎え 7:45〜8:20 → 乗船 11:30頃 → スンソット洞窟・ティートップ島・ルオン洞窟 → 20:30頃帰着<br>
+        子ども2人は0〜4歳無料。この日は体力を使うので翌日はゆるい予定に。<br>
+        <a class="btn klook" href="https://s.klook.com/c/E1_MQ0mrwY_" target="_blank" rel="noopener">Klookで予約を確認する</a>
+      </p>
+    </section>
+  </div>
+
+  <div class="panel" id="panel-days">
+    <section>
+      <h2>📅 日程（たたき台）</h2>
+      <ul class="days">
+        <li><span class="d">10/16（土）到着日</span><br><span class="t">13:00 ハノイ着 → ホテルで休憩・お昼寝 → 夕方はホアンキエム湖をベビーカー散歩（週末は歩行者天国）。夜は近場で早めの夕食。</span></li>
+        <li><span class="d">10/17（日）旧市街をゆっくり</span><br><span class="t">湖畔散策とエッグコーヒー → ホテル休憩 → 午後はタンロン水上人形劇（約50分）。</span></li>
+        <li><span class="d">10/18（月）ハロン湾</span><br><span class="t">日帰りクルーズ。バス移動中は子どもたちのお昼寝時間に。</span></li>
+        <li><span class="d">10/19（火）最終日</span><br><span class="t">お土産買い物とカフェ → 休憩 → 早めの夕食と荷造り → 21:00頃ホテル発で空港へ。</span></li>
+        <li><span class="d">10/20（水）帰国</span><br><span class="t">6:40 関空着。帰宅してゆっくり休む日。</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <div class="panel" id="panel-spots">
+    <section>
+      <h2>📍 行きたいスポット <span class="badge pink">タップでマップ</span></h2>
+      <div class="spot"><div class="emoji">🍜</div><div class="info"><div class="name">Huyền Hương Chicken Phở</div><div class="note">ミシュラン掲載の鶏フォー ／ ホテルから約140m</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Huyen+Huong+Chicken+Pho+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🍲</div><div class="info"><div class="name">Bún Chả Đắc Kim</div><div class="note">1966年創業のブンチャー老舗 ／ 現金のみ</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Bun+Cha+Dac+Kim+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🥖</div><div class="info"><div class="name">Banh Mi Mama</div><div class="note">大教会そばのバインミーワゴン</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Banh+Mi+Mama+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🍕</div><div class="info"><div class="name">Pizza 4P's Tràng Tiền</div><div class="note">自家製ブッラータが看板 ／ 子連れの確実な一食・予約推奨</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Pizza+4P%27s+Trang+Tien+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🍫</div><div class="info"><div class="name">Maison Marou（Cầu Gỗ）</div><div class="note">ベトナム産チョコレート ／ お土産候補・湖の東側</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Maison+Marou+Cau+Go+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">☕</div><div class="info"><div class="name">Café Giảng</div><div class="note">エッグコーヒー発祥店（1946年創業）</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Cafe+Giang+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🎭</div><div class="info"><div class="name">タンロン水上人形劇場</div><div class="note">1回約50分 ／ 人気の回は事前にチケット確保</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Thang+Long+Water+Puppet+Theatre+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🍦</div><div class="info"><div class="name">Kem Tràng Tiền</div><div class="note">1950年代から続く老舗アイス ／ 湖畔散歩のお供</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Kem+Trang+Tien+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🛒</div><div class="info"><div class="name">BRGMart Hàng Trống</div><div class="note">ローカルスーパー ／ 水・おやつ・お土産調達</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=BRGMart+Hang+Trong+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+      <div class="spot"><div class="emoji">🥭</div><div class="info"><div class="name">ドンスアン市場</div><div class="note">生鮮・フルーツ売り場 ／ ドリアンのデビュー候補地</div></div><a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Dong+Xuan+Market+Hanoi" target="_blank" rel="noopener">マップ</a></div>
+    </section>
+  </div>
+
+  <div class="panel" id="panel-prep">
+    <section>
+      <h2>✅ 準備チェックリスト</h2>
+      <ul class="check" id="checklist">
+        <li><label><input type="checkbox" data-k="passport">🍒のパスポート取得（2027年8月まで）</label></li>
+        <li><label><input type="checkbox" data-k="seats">飛行機の機材・座席の再確認（2027年7月）</label></li>
+        <li><label><input type="checkbox" data-k="puppet">水上人形劇のチケット手配</label></li>
+        <li><label><input type="checkbox" data-k="durian">ドリアンを食べる（現地で新鮮なやつ）</label></li>
+        <li><label><input type="checkbox" data-k="wine">ベトナムワインを1本買う</label></li>
+        <li><label><input type="checkbox" data-k="4ps">Pizza 4P's の予約（30日前から可）</label></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>💰 予算メモ</h2>
+      <table class="budget">
+        <tr><td>✈️ 航空券（大人2人＋🍑）</td><td>105,000マイル</td></tr>
+        <tr><td>✈️ 🍒 幼児券</td><td>¥41,600（支払済）</td></tr>
+        <tr><td>🏨 ホテル3泊</td><td>約¥40,000（後払い）</td></tr>
+        <tr><td>🚢 ハロン湾クルーズ</td><td>¥21,672（支払済）</td></tr>
+        <tr><td>🎒 現地費用の目安</td><td>現金総枠 約¥200,000</td></tr>
+      </table>
+      <p class="memo">旅行積立の戻し分もハノイ資金に充当予定。</p>
+    </section>
+
+    <section>
+      <h2>📝 メモ</h2>
+      <ul class="memo">
+        <li>パパは花粉症由来のフルーツアレルギー：カットフルーツの盛り合わせは中身を確認してから注文（イチゴはOK）。</li>
+        <li>子連れペース厳守：予定は詰め込まない、お昼寝とホテル休憩を挟む。</li>
+        <li>週末のホアンキエム湖周辺は歩行者天国でベビーカーに優しい。</li>
+        <li>クルーズの日はベビーカーより抱っこ紐が現実的かも（確認中）。</li>
+      </ul>
+    </section>
+  </div>
+</main>
+<footer>わが家のハノイ旅行アプリ（試作版 v0.2）— これから少しずつ育てる</footer>
+
+<nav class="tabbar">
+  <button class="on" data-tab="home"><span class="ic">🏠</span>ホーム</button>
+  <button data-tab="days"><span class="ic">📅</span>日程</button>
+  <button data-tab="spots"><span class="ic">📍</span>スポット</button>
+  <button data-tab="prep"><span class="ic">✅</span>準備</button>
+</nav>
+
+<script>
+  // 出発までのカウントダウン（2027-10-16 10:00 JST）
+  (function(){
+    var target = new Date('2027-10-16T10:00:00+09:00').getTime();
+    var el = document.getElementById('countdown');
+    function tick(){
+      var days = Math.ceil((target - Date.now()) / 86400000);
+      el.innerHTML = days > 0 ? '出発まであと <b>' + days + '</b> 日' : 'いってらっしゃい！✈️';
+    }
+    tick(); setInterval(tick, 3600000);
+  })();
+  // 下タブ切り替え
+  (function(){
+    var btns = document.querySelectorAll('nav.tabbar button');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        btns.forEach(function(x){ x.classList.toggle('on', x === b); });
+        document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('active'); });
+        document.getElementById('panel-' + b.dataset.tab).classList.add('active');
+        window.scrollTo({top: 0});
+      });
+    });
+  })();
+  // チェックリストの保存
+  (function(){
+    var boxes = document.querySelectorAll('#checklist input[type=checkbox]');
+    boxes.forEach(function(b){
+      var saved = localStorage.getItem('hanoi-check-' + b.dataset.k);
+      if (saved === '1'){ b.checked = true; b.closest('li').classList.add('done'); }
+      b.addEventListener('change', function(){
+        localStorage.setItem('hanoi-check-' + b.dataset.k, b.checked ? '1' : '0');
+        b.closest('li').classList.toggle('done', b.checked);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
