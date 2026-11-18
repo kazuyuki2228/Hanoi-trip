@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#37a5a0"/>
+      <stop offset="1" stop-color="#27807f"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="0.5" cy="0.45" r="0.65">
+      <stop offset="0" stop-color="#ffedc9"/>
+      <stop offset="1" stop-color="#ffaf66"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <circle cx="256" cy="238" r="140" fill="url(#sun)"/>
+  <!-- water ripples -->
+  <g fill="none" stroke="#bfe8df" stroke-width="5" opacity="0.65">
+    <ellipse cx="250" cy="432" rx="150" ry="15"/>
+    <ellipse cx="140" cy="456" rx="88" ry="10"/>
+    <ellipse cx="368" cy="458" rx="98" ry="11"/>
+    <ellipse cx="256" cy="480" rx="168" ry="14" opacity="0.5"/>
+  </g>
+  <!-- Turtle Tower -->
+  <g>
+    <rect x="166" y="398" width="180" height="16" rx="5" fill="#c7432b"/>
+    <rect x="176" y="388" width="160" height="12" rx="4" fill="#e4572e"/>
+    <!-- tier 1 -->
+    <rect x="186" y="318" width="140" height="72" fill="#f2762e"/>
+    <path d="M208,390 v-32 a12,12 0 0 1 24,0 v32 z" fill="#7a2a22"/>
+    <path d="M280,390 v-32 a12,12 0 0 1 24,0 v32 z" fill="#7a2a22"/>
+    <path d="M168,320 L344,320 L330,296 L182,296 Z" fill="#d63c2f"/>
+    <path d="M168,320 L148,305 L182,307 Z" fill="#d63c2f"/>
+    <path d="M344,320 L364,305 L330,307 Z" fill="#d63c2f"/>
+    <!-- tier 2 -->
+    <rect x="198" y="238" width="116" height="60" fill="#f58a3c"/>
+    <path d="M222,298 v-26 a10,10 0 0 1 20,0 v26 z" fill="#7a2a22"/>
+    <path d="M270,298 v-26 a10,10 0 0 1 20,0 v26 z" fill="#7a2a22"/>
+    <path d="M182,240 L330,240 L318,218 L194,218 Z" fill="#d63c2f"/>
+    <path d="M182,240 L164,227 L194,229 Z" fill="#d63c2f"/>
+    <path d="M330,240 L348,227 L318,229 Z" fill="#d63c2f"/>
+    <!-- tier 3 -->
+    <rect x="210" y="168" width="92" height="52" fill="#f2762e"/>
+    <path d="M232,220 v-20 a8,8 0 0 1 16,0 v20 z" fill="#7a2a22"/>
+    <path d="M264,220 v-20 a8,8 0 0 1 16,0 v20 z" fill="#7a2a22"/>
+    <path d="M196,170 L316,170 L304,148 L208,148 Z" fill="#d63c2f"/>
+    <path d="M196,170 L178,157 L208,159 Z" fill="#d63c2f"/>
+    <path d="M316,170 L334,157 L304,159 Z" fill="#d63c2f"/>
+    <!-- finial -->
+    <rect x="250" y="128" width="12" height="20" fill="#b93226"/>
+    <path d="M256,106 L267,128 L245,128 Z" fill="#b93226"/>
+  </g>
+  <!-- lantern -->
+  <g transform="translate(402,378)">
+    <ellipse cx="0" cy="52" rx="44" ry="7" fill="none" stroke="#bfe8df" stroke-width="4" opacity="0.6"/>
+    <circle r="36" fill="#ff6b4a" opacity="0.25"/>
+    <path d="M0,-54 v16" stroke="#7a2a22" stroke-width="3"/>
+    <rect x="-14" y="-38" width="28" height="7" rx="3" fill="#7a2a22"/>
+    <ellipse rx="30" ry="26" fill="#e63329"/>
+    <ellipse rx="18" ry="26" fill="none" stroke="#ffb37a" stroke-width="2.5"/>
+    <ellipse rx="7" ry="26" fill="none" stroke="#ffb37a" stroke-width="2.5"/>
+    <rect x="-10" y="26" width="20" height="6" rx="3" fill="#7a2a22"/>
+    <circle cy="37" r="3.5" fill="#b93226"/>
+    <path d="M0,40 v12" stroke="#e63329" stroke-width="3"/>
+  </g>
+</svg>
